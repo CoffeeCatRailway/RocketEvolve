@@ -10,8 +10,8 @@ var obstacles;
 var rCrashed;
 
 function setup() {
-    // 1200, 700
-    createCanvas(windowWidth, windowHeight);
+    var cnv = createCanvas(1280,720);
+    cnv.id("cnv");
 
     var name = "Rocket Evolve";
     console.log(name + " setup!");
@@ -27,13 +27,6 @@ function setup() {
     var minXOff = -50, maxXOff = 50;
     var minYOff = -100, maxYOff = 50;
     var radius = 12;
-
-    // var tColor = getRandomColor();
-    // var tColor2 = [tColor[0] + random(tColor[0], 255), tColor[1] + random(tColor[1], 255), tColor[2] + random(tColor[2], 255)];
-    // targets = [
-    //     new CollidableEllipse(width / 4 - random(minXOff, maxXOff), 150 - random(minYOff, maxYOff), radius, tColor),
-    //     new CollidableEllipse(width - width / 4 - random(minXOff, maxXOff), 150 - random(minYOff, maxYOff), radius, tColor2)
-    // ];
 
     targets = [];
     for (var i = 0; i < floor(random(1, 3)); i++) {
@@ -57,10 +50,6 @@ function setup() {
             obstacles[i] = new CollidableRect(nx, ny, w + random(-(width / 6), 10), h);
         }
     }
-
-    var button = createButton('Refresh');
-    button.position(0, 46);
-    button.mousePressed(setup);
 }
 
 function getRandomColor() {
@@ -77,7 +66,7 @@ function splitGeneSets() {
 }
 
 function draw() {
-    background(0);
+    background(22);
     population.run();
 
     noStroke();
