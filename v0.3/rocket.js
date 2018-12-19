@@ -84,19 +84,24 @@ function Rocket(dna) {
 
         this.calcClosestTarget();
         var d = dist(this.pos.x, this.pos.y, this.t.x, this.t.y);
-
-        if (d < this.initD) {
-            this.initD = d;
+        if (cbOptShowDist.checked()) {
+            fill(255);
+            text(floor(d), this.pos.x, this.pos.y + 12)
         }
 
-        var r = this.t.c[0] - map(this.initD, 0, 255, 255, 0);
-        var g = this.t.c[1] - map(this.initD, 0, 255, 255, 0);
-        var b = this.t.c[2] - map(this.initD, 0, 255, 255, 0);
-        if (r < this.t.c[0]) r = this.t.c[0];
-        if (g < this.t.c[1]) g = this.t.c[1];
-        if (b < this.t.c[2]) b = this.t.c[2];
+        // if (d < this.initD) {
+        //     this.initD = d;
+        // }
 
-        fill(floor(r), floor(g), floor(b), 150);
+        // var r = this.t.c[0] - map(this.initD, 0, 255, 255, 0);
+        // var g = this.t.c[1] - map(this.initD, 0, 255, 255, 0);
+        // var b = this.t.c[2] - map(this.initD, 0, 255, 255, 0);
+        // if (r < this.t.c[0]) r = this.t.c[0];
+        // if (g < this.t.c[1]) g = this.t.c[1];
+        // if (b < this.t.c[2]) b = this.t.c[2];
+
+        // fill(floor(r), floor(g), floor(b), 150);
+        fill(this.dna.color_[0], this.dna.color_[1], this.dna.color_[2], 150);
 
         translate(this.pos.x, this.pos.y);
         rotate(this.vel.heading());
