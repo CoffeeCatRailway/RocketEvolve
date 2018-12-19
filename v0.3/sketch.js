@@ -55,6 +55,7 @@ function setup() {
 
     cbOptShowDist = createCheckbox();
     cbOptShowDist.parent("opt_show_distance");
+    
     cbOptShowCrashedAlive = createCheckbox();
     cbOptShowCrashedAlive.parent("opt_crashed_alive");
     cbOptShowCrashedAlive.checked(true);
