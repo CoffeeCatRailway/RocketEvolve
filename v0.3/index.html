@@ -27,26 +27,39 @@
                 background-color: #212121;
             }
 
-            #cnv {
+            #cnvs {
                 position: absolute;
                 left: 0;
                 right: 0;
-                margin:auto;
+                margin: auto;
                 border: 3px solid white;
                 border-radius: 4px;
+                background-color: #f2f2f2;
+            }
+
+            #canvas_div {
+                height: 720px;
+                text-align: center;
+            }
+
+            #options {
+                text-align: center;
+                margin: 10px 0px;
             }
 
             .header {
+                background-color: #212121;
                 text-align: center;
+                margin: 10px 0px;
             }
 
             .sty-btn {
                 background-color: #0090ff;
                 color: white;
                 border: none;
-                margin: 7px;
                 font-size: 30px;
                 transition: 0.3s;
+                margin: 7px;
             }
 
             .sty-btn:hover {
@@ -58,6 +71,15 @@
         <div class="header">
             <a href="https://coffeecatrailway.github.io/RocketEvolve/"><button class="sty-btn">Go back</button></a>
             <a><button onclick="setup();" class="sty-btn">Refresh</button></a>
+        </div>
+        <div id="canvas_div"></div>
+        <div id="options">
+            <span id="opt_show_distance" style="color: white;">
+                Show Distance
+            </span>
+            <span id="opt_crashed_alive" style="color: white;">
+                Show Crashed/Alive
+            </span>
         </div>
     </body>
 </html>

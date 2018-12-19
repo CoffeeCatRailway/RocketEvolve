@@ -8,10 +8,12 @@ var targets;
 var obstacles;
 
 var rCrashed;
+var cbOptShowDist, cbOptShowCrashedAlive;
 
 function setup() {
     var cnv = createCanvas(1280,720);
-    cnv.id("cnv");
+    cnv.id("cnvs");
+    cnv.parent("canvas_div");
 
     var name = "Rocket Evolve";
     console.log(name + " setup!");
@@ -50,6 +52,12 @@ function setup() {
             obstacles[i] = new CollidableRect(nx, ny, w + random(-(width / 6), 10), h);
         }
     }
+
+    cbOptShowDist = createCheckbox();
+    cbOptShowDist.parent("opt_show_distance");
+    cbOptShowCrashedAlive = createCheckbox();
+    cbOptShowCrashedAlive.parent("opt_crashed_alive");
+    cbOptShowCrashedAlive.checked(true);
 }
 
 function getRandomColor() {
@@ -73,7 +81,11 @@ function draw() {
     fill(255);
     text("Lifespan: " + count + "/" + lifespan, 0, 10);
     text("Generation: " + generation, 0, 22);
-    text("Crashed/Alive: " + rCrashed + "/" + population.popsize, 0, 34);
+    if (cbOptShowCrashedAlive.checked()) {
+        text("Crashed: " + rCrashed, 0, 34);
+        text("Alive: " + (population.popsize - rCrashed), 0, 46);
+        text("Population: " + population.popsize, 0, 58);
+    }
     
     if (count >= lifespan) {
         population.evaluate();
