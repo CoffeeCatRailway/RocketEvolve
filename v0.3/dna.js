@@ -29,7 +29,7 @@ function DNA(genes, color_) {
         var newcolor_ = [];
         var midcolor_ = floor(random(this.color_.length));
         for (var i = 0; i < this.color_.length; i++) {
-            if (i > midcolor_) {
+            if (random(10) < 0.01) {
                 newcolor_[i] = this.color_[i];
             } else {
                 newcolor_[i] = partner.color_[i];
@@ -46,7 +46,7 @@ function DNA(genes, color_) {
             }
         }
         for (var i = 0; i < this.color_.length; i++) {
-            if (random(1) < 0.01) {
+            if (random(50) < 0.01) {
                 this.color_[i] = random(0, 255);
             }
         }
