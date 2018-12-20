@@ -16,6 +16,7 @@ function DNA(genes, color_) {
     }
     
     this.crossover = function(partner) {
+        // Choose a base gene of movement from the parents
         var newgenes = [];
         var midgenes = floor(random(this.genes.length));
         for (var i = 0; i < this.genes.length; i++) {
@@ -26,8 +27,8 @@ function DNA(genes, color_) {
             }
         }
 
+        // Choose a color gene from the parents
         var newcolor_ = [];
-        var midcolor_ = floor(random(this.color_.length));
         for (var i = 0; i < this.color_.length; i++) {
             if (random(10) < 0.01) {
                 newcolor_[i] = this.color_[i];
@@ -39,12 +40,15 @@ function DNA(genes, color_) {
     }
     
     this.mutation = function() {
+        // Mutate a base gene of movement
         for (var i = 0; i < this.genes.length; i++) {
             if (random(1) < 0.01) {
                 this.genes[i] = p5.Vector.random2D();
                 this.genes[i].setMag(maxforce);
             }
         }
+
+        // Mutate a color gene
         for (var i = 0; i < this.color_.length; i++) {
             if (random(50) < 0.01) {
                 this.color_[i] = random(0, 255);
