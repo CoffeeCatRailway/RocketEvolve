@@ -53,12 +53,10 @@ function setup() {
         }
     }
 
-    cbOptShowDist = createCheckbox();
-    cbOptShowDist.parent("opt_show_distance");
+    cbOptShowDist = document.getElementById("cbOptShowDist");
     
-    cbOptShowCrashedAlive = createCheckbox();
-    cbOptShowCrashedAlive.parent("opt_crashed_alive");
-    cbOptShowCrashedAlive.checked(true);
+    cbOptShowCrashedAlive = document.getElementById("cbOptShowCrashedAlive");
+    cbOptShowCrashedAlive.checked = true;
 }
 
 function getRandomColor() {
@@ -82,7 +80,10 @@ function draw() {
     fill(255);
     text("Lifespan: " + count + "/" + lifespan, 0, 10);
     text("Generation: " + generation, 0, 22);
-    if (cbOptShowCrashedAlive.checked()) {
+    if (cbOptShowCrashedAlive.checked) {
+        if (rCrashed > population.popsize) {
+            population.popsize = rCrashed;
+        }
         text("Crashed: " + rCrashed, 0, 34);
         text("Alive: " + (population.popsize - rCrashed), 0, 46);
         text("Population: " + population.popsize, 0, 58);

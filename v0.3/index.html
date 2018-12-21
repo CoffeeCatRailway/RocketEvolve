@@ -47,6 +47,12 @@
                 margin: 10px 0px;
             }
 
+            #option {
+                color: white;
+                text-align: center;
+                margin: 10px 0px;
+            }
+
             .header {
                 background-color: #212121;
                 text-align: center;
@@ -74,11 +80,15 @@
         </div>
         <div id="canvas_div"></div>
         <div id="options">
-            <span id="opt_show_distance" style="color: white;">
-                Show Distance
+            <span id="option">
+                Show Distance: <input type="checkbox" id="cbOptShowDist">
             </span>
-            <span id="opt_crashed_alive" style="color: white;">
-                Show Crashed/Alive
+            <span id="option">
+                Show Crashed/Alive: <input type="checkbox" id="cbOptShowCrashedAlive">
+            </span>
+            <br />
+            <span id="option">
+                Population size: <input type="range" min="100" max="1000" value="500" id="slOptPopsize">
             </span>
         </div>
     </body>
