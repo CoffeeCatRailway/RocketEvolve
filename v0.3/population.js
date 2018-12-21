@@ -44,10 +44,45 @@ function Population(popsize) {
     
     this.run = function() {
         for (var i = 0; i < this.popsize; i++) {
-            if (!this.rockets[i].crashed) {
-                this.rockets[i].update();
+            if (this.rockets[i] == null) {
+                this.rockets[i] = new Rocket(this.rockets[i - floor(random(1, 50))].dna);
+            } else {
+                if (!this.rockets[i].crashed) {
+                    this.rockets[i].update();
+                }
+                this.rockets[i].show();
             }
-            this.rockets[i].show();
+        }
+
+        var slOptPopsize = document.getElementById("slOptPopsize");
+        this.popsize = slOptPopsize.value;
+    }
+
+    // Console functions
+    this.setColorAll = function(colorGenes) {
+        if (!colorGenes) {
+            colorGenes = [255, 255, 255];
+        }
+        for (var i = 0; i < this.popsize; i++) {
+            this.rockets[i].dna.colorGenes = colorGenes;
+        }
+    }
+
+    this.setColorHalfA = function(colorGenes) {
+        if (!colorGenes) {
+            colorGenes = [255, 255, 255];
+        }
+        for (var i = 0; i < this.popsize / 2; i++) {
+            this.rockets[i].dna.colorGenes = colorGenes;
+        }
+    }
+
+    this.setColorHalfB = function(colorGenes) {
+        if (!colorGenes) {
+            colorGenes = [255, 255, 255];
+        }
+        for (var i = this.popsize / 2; i < this.popsize; i++) {
+            this.rockets[i].dna.colorGenes = colorGenes;
         }
     }
 }

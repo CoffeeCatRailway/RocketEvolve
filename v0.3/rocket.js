@@ -55,7 +55,7 @@ function Rocket(dna) {
             this.setCrashed(true);
         }
         
-        this.applyForce(this.dna.genes[count]);
+        this.applyForce(this.dna.moveGenes[count]);
         if (!this.completed && !this.crashed) {
             this.vel.add(this.acc);
             this.pos.add(this.vel);
@@ -76,7 +76,6 @@ function Rocket(dna) {
         }
     }
     
-    this.initD = dist(this.pos.x, this.pos.y, targets[0].x, targets[0].y);
     this.t = targets[0];
     this.show = function() {
         push();
@@ -84,29 +83,17 @@ function Rocket(dna) {
 
         this.calcClosestTarget();
         var d = dist(this.pos.x, this.pos.y, this.t.x, this.t.y);
-        if (cbOptShowDist.checked()) {
+        if (cbOptShowDist.checked) {
             fill(255);
             text(floor(d), this.pos.x, this.pos.y + 12)
         }
 
-        // if (d < this.initD) {
-        //     this.initD = d;
-        // }
-
-        // var r = this.t.c[0] - map(this.initD, 0, 255, 255, 0);
-        // var g = this.t.c[1] - map(this.initD, 0, 255, 255, 0);
-        // var b = this.t.c[2] - map(this.initD, 0, 255, 255, 0);
-        // if (r < this.t.c[0]) r = this.t.c[0];
-        // if (g < this.t.c[1]) g = this.t.c[1];
-        // if (b < this.t.c[2]) b = this.t.c[2];
-
-        // fill(floor(r), floor(g), floor(b), 150);
-        fill(this.dna.color_[0], this.dna.color_[1], this.dna.color_[2], 150);
+        fill(this.dna.colorGenes[0], this.dna.colorGenes[1], this.dna.colorGenes[2], 150);
 
         translate(this.pos.x, this.pos.y);
         rotate(this.vel.heading());
         rectMode(CENTER);
-        rect(0, 0, 36, 5);
+        rect(0, 0, this.dna.lengthGene, this.dna.widthGene);
         pop();
     }
 
